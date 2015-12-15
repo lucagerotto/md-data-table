@@ -9,8 +9,13 @@ function mdDataTablePagination($q) {
       of: 'of'
     };
     
-    if(angular.isObject(scope.label)) {
-      angular.extend(scope.paginationLabel, scope.label);
+    if( angular.isObject(scope.label) ) {
+    	angular.extend(scope.paginationLabel, scope.label);
+    	scope.$watch('label', function(n,o){
+	    	if (n!=o){
+	    		angular.extend(scope.paginationLabel, scope.label);
+	    	}
+    	},true);
     }
     
     // table progress
